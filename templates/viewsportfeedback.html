@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+      <head>
+            <title>ViewSportFeedback:</title>
+            <meta http-equiv="Cache-control" content="no-cache">  <!--no cache is stored -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+            <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <!-- Styling for the page: -->
+            <style>
+                  .demo2{
+                    width:100px;
+                  }
+                  #frontbody {
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-image: url("../static/final.jpeg");
+                  }
+                  #customers {
+                  font-family: Arial, Helvetica, sans-serif;
+                  border-collapse: collapse;
+                  width: 100%;
+                }
+
+                #customers td, #customers th {
+                  border: 1px solid #ddd;
+                  padding: 8px;
+                  /* background-color:black;
+                  color:white; */
+                }
+
+                #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+                #customers tr:hover {background-color: #ddd;}
+
+                #customers th {
+                  padding-top: 12px;
+                  padding-bottom: 12px;
+                  text-align: left;
+                  background-color: #4CAF50;
+                  color: white;
+                }
+                  /* .table td.fit,.table th.fit {
+                  white-space: nowrap;
+                  width: 1%;
+                  } */
+                  /* table,th,td {
+                  border : 1px solid black;
+                  border-collapse: collapse;
+                  font-style: verdana;
+                  background-color: black;
+                  color: white;
+                  }
+                  th,td {
+                  padding: 5px;
+                  } */
+                  a.btn:hover {
+                     -webkit-transform: scale(1.1);
+                     -moz-transform: scale(1.1);
+                     -o-transform: scale(1.1);
+                  }
+                  a.btn {
+                     -webkit-transform: scale(0.8);
+                     -moz-transform: scale(0.8);
+                     -o-transform: scale(0.8);
+                     -webkit-transition-duration: 0.5s;
+                     -moz-transition-duration: 0.5s;
+                     -o-transition-duration: 0.5s;
+                  }
+          </style>
+      </head>
+      <body id="frontbody">
+          <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
+              <p style="color:aquamarine;font-size:30px">
+                <span class="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sports and Event FeedBack Details  !!!</span>
+            </p>
+             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+  <a href="{{url_for('adminstudent')}}" class="btn btn-primary a-btn-slide-text" style="float:right">
+    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    <span><strong><h5>Student</h5></strong></span>
+  </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="{{url_for('facultydata')}}" class="btn btn-primary a-btn-slide-text" style="float:right">
+    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    <span><strong><h5>Faculty</h5></strong></span>
+  </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <a  href="{{url_for('load')}}" class="btn btn-primary a-btn-slide-text" style="float:right">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                <span><strong><h5>Logout</h5></strong></span>
+              </a>
+        </nav>
+  <br><br><br><br><br><br>
+  <table class="table table-hover" id="customers">
+    <thead>
+        <tr>
+          {% for i in header %}
+             <th scope="col"> {{ i }} </th>
+          {% endfor %}
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+          {% for dt in indexval %}
+            <!-- <td> {{ dt }} <td> -->
+            {% for i in range(collen) %}
+              <td> {{ dt[i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+          {% endfor %}
+        </tr>
+        </tbody>
+  </table>
+    </form>
+ </body>   
+   </html>

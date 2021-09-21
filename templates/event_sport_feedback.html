@@ -1,0 +1,161 @@
+l<!DOCTYPE html>
+<html>
+    <head>
+        <title>SportFeedback</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="../static/form.css" >
+    </head>
+    <body>
+            <div class="imagebg"></div>
+            <div class="row " style="margin-top: 50px">
+                <div class="col-md-6 col-md-offset-3 form-container">
+                    <h2>Sport and Event Feedback</h2>
+                    <p>
+                        Please provide your feedback below:
+                    </p>
+                    <form role="form" method="post" id="reused_form" action="{{url_for('sportfeedback')}}">
+                        <div class="row">
+                                <!-- How do you rate your overall experience? -->
+                            <div class="col-sm-12 form-group">
+                            <label>How do you rate Avaliablity of Sport Resource?</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="sport_resource" id="sport_resource" value="bad" required >
+                                Bad
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="sport_resource" id="sport_resource" value="average" required >
+                                Average
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="sport_resource" id="sport_resource" value="good" required >
+                                Good
+                                </label>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                            <label>Space available for Sports and Event?</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="space" id="space" value="bad" required >
+                                Bad
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="space" id="space" value="average" required >
+                                Average
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="space" id="space" value="good" required >
+                                Good
+                                </label>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <!-- How do you rate your overall experience? -->
+                            <div class="col-sm-12 form-group">
+                            <label>Coach or Instructor Availability?</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="coach_availability" id="coach__availability" value="bad" required >
+                                Bad
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="coach__availability" id="coach__availability" value="average" required >
+                                Average
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio"  name="coach__availability" id="coach__availability" value="good" required >
+                                Good
+                                </label>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 form-group">
+                        <label>Sport or Event Dress Quality?</label>
+                        <p>
+                            <label class="radio-inline">
+                            <input type="radio" name="dress_quality" id="dress_quality" value="bad" required >
+                            Bad
+                            </label>
+        
+                            <label class="radio-inline">
+                            <input type="radio" name="dress_quality" id="dress_quality" value="average" required >
+                            Average
+                            </label>
+        
+                            <label class="radio-inline">
+                            <input type="radio"  name="dress_quality" id="dress_quality" value="good" required >
+                            Good
+                            </label>
+                        </p>
+                        </div>
+                         </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="comments">
+                                    Suggestion if any ? :</label>
+                                <textarea class="form-control" type="textarea" name="suggestion" id="suggestion" placeholder="Your Valuable Suggestion" maxlength="6000" rows="7" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                            <label>Performance and Ranking of Sport in College? :</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="sportadded" id="sportadded" value="Good" required >
+                                Good
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="sportadded" id="sportadded" value="Average" required >
+                                Average
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio"  name="sportadded" id="sportadded" value="Bad" required >
+                                Bad
+                                </label>
+                            </p>
+                            </div>
+                             </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="ID">
+                                    EnrollmentID:</label>
+                                <input type="text" class="form-control" id="enrollmentid" name="enrollmentid" required>
+                            </div>
+                        </div>
+            
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block" onClick="Confirm(this.form)">Post </button>
+                            </div>
+                        </div>
+            
+                    </form>
+                    </div>
+            </div>
+    </body>
+    <script type="text/javascript">
+        function Confirm(form){
+        alert("feedback given successfully!"); 
+        form.submit();
+        }
+    </script>
+</html>

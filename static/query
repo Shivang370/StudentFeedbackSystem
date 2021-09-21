@@ -1,0 +1,185 @@
+CREATE TABLE canteenfeedback(
+CStudentId TEXT NOT NULL,
+foodquality TEXT NOT NULL,
+hygen_cleanliness TEXT NOT NULL,
+staffservice_behaviour TEXT NOT NULL,
+suggestion TEXT NOT NULL,
+foreign key(CStudentId) REFERENCES student(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE sportfeedback(
+sID TEXT NOT NULL,
+sport_resource TEXT NOT NULL,
+sport_space TEXT NOT NULL,
+coach_availability TEXT NOT NULL,
+suggestion TEXT NOT NULL,
+dress_quality TEXT NOT NULL,
+ranking_performance TEXT NOT NULL,
+foreign key(sID) REFERENCES student(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE ACADEMICFEEDBACK(
+Teaching_quality TEXT NOT NULL,
+Guidance TEXT NOT NULL,
+Quality_course_content TEXT NOT NULL,
+Subject_Interest TEXT NOT NULL,
+Semester_Experience TEXT NOT NULL,
+Suggestion TEXT NOT NULL,
+Semester TEXT NOT NULL CHECK(Semester>'0' AND Semester<'7'),
+CourseId TEXT NOT NULL,
+Subjectid TEXT NOT NULL,
+Faculty_ID TEXT NOT NULL,
+PRIMARY KEY(Faculty_ID,Subjectid,CourseId,Semester),
+foreign key(CourseId) REFERENCES Course_list(course_id) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key(Faculty_ID,Subjectid) REFERENCES faculty(fid,fsubjectid) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key(Subjectid) REFERENCES subject(sid) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE faculty(
+fid TEXT NOT NULL,
+fname TEXT NOT NULL,
+fcourseid TEXT NOT NULL,
+fsubjectid TEXT NOT NULL,
+fdeptid BIGINT NOT NULL,
+femail TEXT NOT NULL,
+faddress TEXT NOT NULL,
+fmobile TEXT NOT NULL,
+PRIMARY KEY(fid,fsubjectid),
+foreign key(fdeptid) REFERENCES DEPARTMENT(dept_id) ON DELETE CASCADE ON UPDATE CASCADE, 
+foreign key(fcourseid) REFERENCES Course_list(course_id) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key(fsubjectid) REFERENCES subject(sid) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+Create table course(
+cid TEXT NOT NULL,
+studentid TEXT NOT NULL,
+subjectid TEXT NOT NULL,
+PRIMARY KEY(cid,subjectid,studentid),
+foreign key(cid) REFERENCES Course_list(course_id) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key(subjectid) REFERENCES subject(sid) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key(studentid) REFERENCES student(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE student(
+id TEXT PRIMARY KEY NOT NULL,
+name TEXT NOT NULL,
+semester TEXT NOT NULL CHECK(semester>'0' AND semester<'7'),
+SCourseid TEXT NOT NULL,
+address TEXT,
+mobile BIGINT NOT NULL,
+email TEXT NOT NULL,
+password TEXT NOT NULL,
+foreign key(SCourseid) REFERENCES Course_list(course_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+Create table subject(
+sid TEXT NOT NULL, 
+sname TEXT NOT NULL,
+PRIMARY KEY(sid)
+);
+
+CREATE TABLE Course_list(
+course_id TEXT NOT NULL,
+course_name TEXT NOT NULL,
+d_id BIGINT NOT NULL,
+PRIMARY KEY(course_id),
+foreign key(d_id) REFERENCES DEPARTMENT(dept_id) ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
+
+CREATE TABLE DEPARTMENT(
+dept_id BIGINT NOT NULL,
+dept_name TEXT NOT NULL,
+PRIMARY KEY(dept_id) );
+
+
+CREATE TABLE admin( name TEXT NOT NULL,
+password TEXT NOT NULL
+);
+
+
+
+
+#######  FOR FACULTY:
+
+INSERT INTO faculty(fid,fname,fcourseid,fsubjectid,fdeptid,femail,faddress,fmobile) VALUES
+
+('CS#F01','ANITA GOEL','BSC#CSH','CORE#II02','1','anita@gmail.com','777 Brockton Avenue, Abington MA 2351','9876543210'),
+
+('CS#F01','ANITA GOEL','BSC#CSH','CORE#III02','1','anita@gmail.com','30 Memorial Drive, Avon MA 2322','9876543210'),
+
+('CS#F04','SHEETAL TANEJA','BSC#CSH','CORE#I02','1','sheetal@gmail.com','250 Hartford Avenue, Bellingham MA 2019','9876543213'),
+
+('CS#F05','MRINALI YADAV','BSC#CSH','CORE#II01','1','mrinali@gmail.com','700 Oak Street, Brockton MA 2301','9876543214'),
+
+
+('CS#F05','MRINALI YADAV','BSC#CSH','CORE#I01','1','mrinali@gmail.com','591 Memorial Dr, Chicopee MA 1020','9876543214'),
+('CS#F02','HEMA BANOTI','BSC#CSH','CORE#IV03','1','hema@gmail.com','591 Memorial Dr, Chicopee MA 1020','9876543211'),
+('CS#F03','SAPNA GROVER','BSC#CSH','CORE#IV01','1','sapna@gmail.com','374 William S Canning Blvd, Fall River MA 2721','9876543212')
+,
+('CS#F04','SHEETAL TANEJA','BSC#CSH','CORE#III01','1','sheetal@gmail.com','121 Worcester Rd, Framingham MA 1701','9876543213'),
+
+('CS#F05','MRINALI YADAV','BSC#CSH','CORE#III03','1','mrinali@gmail.com','121 Worcester Rd, Framingham MA 1701','9876543214'),
+
+
+('CS#F07','AMIT BANSAL','BSC#CSH','CORE#IV02','1','amit@gmail.com','1775 Washington St, Hanover MA 2339','9876543216');
+
+
+INSERT INTO faculty(fid,fname,fcourseid,fsubjectid,fdeptid,femail,faddress,fmobile) VALUES
+
+('CS#F08','MEHAK','BSC#CSH','SEC#IV01','1','mehak@gmail.com','280 Washington Street, Hudson MA 1749','9876543217')
+,
+('MAT#F01','NIKHIL','BSC#CSH','GE#IVM2','2','nikhil@gmail.com','20 Soojian Dr, Leicester MA 1524','9876543218'),
+
+('MAT#F02','RAVI MALHOTRA','BSC#CSH','GE#IVM2','2','ravi@gmail.com','301 Massachusetts Ave, Lunenburg MA 1462','9876543219'),
+
+('CS#F07','AMIT BANSAL','BSC#CSH','SEC#III01','1','amit@gmail.com','200 Otis Street, Northborough MA 1532','9876543216');
+
+
+
+
+###### FOR SUBJECT;
+
+
+INSERT INTO subject(sid,sname) VALUES ('CORE#I01','PROGRAMMING FUNDAMENTALS USING C++')
+,('CORE#I02','COMPUTER SYSTEM ARCHITECTURE'),('CORE#II01','PROGRAMMING IN JAVA'),('CORE#II02','DISCRETE STRUCTURES'),('CORE#III01','DATA STRUCTURES'),('CORE#III02','OPERATING SYSTEMS'),
+('CORE#III03','COMPUTER NETWORKS'),('CORE#IV01','DESIGN AND ANALYSIS OF ALGORITHMS'),('CORE#IV02','SOFTWARE ENGINEERING'),('CORE#IV03','DATABASE MANAGEMENT SYSTEM'),('CORE#V01','INTERNET TECHNOLOGIES'),('CORE#V02','THEORY OF COMPUTATION'),
+('CORE#VI01','ARTIFICIAL INTELLIGENCE'),('CORE#VI02','COMPUTER GRAPHICS');
+
+
+INSERT INTO subject(sid,sname) VALUES('SEC#III01','ANDROID PROGRAMMING'),('SEC#IV01','PHP PROGRAMMING'),('DSE#V01','SYSTEM PROGRAMMING'),
+('DSE#V02','NUMERICAL METHODS'),('DSE#V03','OPERATIONAL RESEARCH FOR COMPUTER SCIENCE'),('DSE#V04','MICROPROCESSOR'),
+('DSE#V05','MODELLING AND SIMULATION'),('DSE#V06','ADVANCED ALGORITHMS'),('DSE#VI01','MACHINE LEARNING'),
+('DSE#VI02','INTRODUCTION TO DATA SCIENCES'),('DSE#VI03','COMBINATIONAL OPTIMIRATION'),('DSE#VI04','DIGITAL IMAGE PROCESSING'),
+('DSE#VI05','DATA MINING'),('DSE#VI06','PROJECT WORK');
+
+
+
+INSERT INTO subject(sid,sname) VALUES('AECC#I01','ENVIRONMENTAL SCIENCE'),('AECC#II01','ENGLISH-A'),('GE#IM1','CALCULUS'),
+('GE#IM2','ANALYTIC GEOMETRY AND THEORY OF EQUATION'),('GE#IIM1','LINEAR ALGEBRA'),('GE#IIM2','DISCRETE MATHEMATICS'),
+('GE#IIIM1','DIFFERENTIAL EQUATIONS'),('GE#IIIM2','LINEAR PROGRAMMING AND GAME THEORY'),('GE#IVM1','NUMERICAL METHODS'),
+('GE#IVM2','ELEMENTS OF ANALYSIS'),('GE#IP1','ELECTRICITY AND MAGNETISM'),('GE#IP2','DIGITAL,ANALOG CIRCUITS AND INSTRUMENTATION'),
+('GE#IIP1','MECHANICS'),('GE#IIP2','ELEMENTS OF MODERN PHYSICS'),('GE#IIIP1','WAVES AND OPTICS'),('GE#IIIP2','QUANTUM MECHANICS'),
+('GE#IVP1','THERMAL PHYSICS'),('GE#IVP2','NUCLEAR AND PRACTICAL PHYSICS');
+
+
+
+
+##### FOR ADMIN:
+
+
+insert into admin values ('SHIVANG','$ABC123');
+
+
+#### FOR COURSE LIST:
+
+
+INSERT INTO Course_list(course_id,course_name,d_id) VALUES('BSC#CSH','BSC(HONS)COMPUTER SCIENCE','1');
+
+
+######FOR DEPARTMENT;
+
+
+INSERT INTO DEPARTMENT(dept_id,dept_name) VALUES('1','COMPUTER SCIENCE');
+INSERT INTO DEPARTMENT(dept_id,dept_name) VALUES('2','MATHEMATICS');

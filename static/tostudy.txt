@@ -1,0 +1,31 @@
+Bootstrap Link: https://mdbootstrap.com/docs/jquery/components/buttons/
+https://www.youtube.com/watch?v=ZcY5YHS7v2U
+https://www.youtube.com/watch?v=Ofy_jRHE3no
+https://www.w3schools.com/Css/tryit.asp?filename=trycss_table_fancy  
+https://getbootstrap.com/docs/4.0/content/tables/
+
+
+
+
+
+
+
+
+
+
+See ajax  | from youtube one video
+see css,html,jquery(how to click button,access button data,td:eq),ajax format in jquery | from w3school.com
+see jinja template in flask
+Difference in <p> tag and <span> tag
+How to edit table row | stack overflow
+
+See how to define form inside table | stackoverflow
+
+
+ enctype=multipart/form-data
+
+
+
+
+
+

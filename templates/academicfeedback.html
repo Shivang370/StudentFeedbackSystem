@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AcademicFeedback</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="../static/form.css" >
+    </head>
+    <body>
+            <div class="imagebg"></div>
+            <div class="row " style="margin-top: 50px">
+                <div class="col-md-6 col-md-offset-3 form-container">
+                    <h2>Academic Feedback</h2>
+                    <p>
+                        Please provide your feedback below:
+                    </p>
+                    <form role="form" method="post" id="reused_form" action="{{url_for('academicfeedback')}}">
+                        <div class="row">
+                                <!-- How do you rate your overall experience? -->
+                            <div class="col-sm-12 form-group">
+                            <label>Quality of Teaching</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="teaching" id="teaching" value="good" required >
+                                Good
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="teaching" id="teaching" value="better" required >
+                                Better
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="teaching" id="teaching" value="average" required >
+                                Average
+                                </label>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <!-- How do you rate your overall experience? -->
+                            <div class="col-sm-12 form-group">
+                            <label>Guidence and support By Faculty</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="guidance" id="guidence" value="good" required >
+                                Good
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="guidance" id="guidence" value="better" required >
+                                Better
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="guidance" id="guidence" value="average" required >
+                                Average
+                                </label>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <!-- How do you rate your overall experience? -->
+                            <div class="col-sm-12 form-group">
+                            <label>Quality of Course content</label>
+                            <p>
+                                <label class="radio-inline">
+                                <input type="radio" name="course" id="course" value="good" required >
+                                Good
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio" name="course" id="course" value="better" >
+                                Better
+                                </label>
+            
+                                <label class="radio-inline">
+                                <input type="radio"  name="course" id="course" value="average" required >
+                                Average
+                                </label>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- How do you rate your overall experience? -->
+                        <div class="col-sm-12 form-group">
+                        <label>Interest in the Subject</label>
+                        <p>
+                            <label class="radio-inline">
+                            <input type="radio" name="Interest" id="Interest" value="good" required >
+                            Good
+                            </label>
+        
+                            <label class="radio-inline">
+                            <input type="radio" name="Interest" id="Interest" value="better" required >
+                            Better
+                            </label>
+        
+                            <label class="radio-inline">
+                            <input type="radio" name="Interest" id="Interest" value="average" required >
+                            Average
+                            </label>
+                        </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- How do you rate your overall experience? -->
+                    <div class="col-sm-12 form-group">
+                    <label>Overall Semester Experience</label>
+                    <p>
+                        <label class="radio-inline">
+                        <input type="radio" name="Semester_exp" value="good" required >
+                        Good
+                        </label>
+    
+                        <label class="radio-inline">
+                        <input type="radio" name="Semester_exp" value="better" required >
+                        Better
+                        </label>
+    
+                        <label class="radio-inline">
+                        <input type="radio" name="Semester_exp" value="average" required >
+                        Average
+                        </label>
+                    </p>
+                    </div>
+                </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="comments">
+                                    Suggestion if any ? :</label>
+                                <textarea class="form-control" type="textarea" name="suggestion" id="suggestion" placeholder="Your Valuable Suggestion" maxlength="6000" rows="7" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="course">
+                                    CourseId:</label>
+                                <input type="text" class="form-control" name="courseid" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label for="Semester">
+                                    Semester:</label>
+                                <input type="text" class="form-control" name="Semester" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label for="subject">
+                                    SubjectId:</label>
+                                <input type="text" class="form-control" name="subjectid" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                            <label for="Faculty ID">
+                                    Faculty ID:</label>
+                                <input type="text" class="form-control" name="FacultyID" required>
+                            </div>
+                        </div>
+            
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block" onClick="Confirm(this.form)">Post </button>
+                            </div>
+                        </div>
+                        <a href="{{url_for('alldata')}}">View More</a>  
+                 
+                    </form>
+                </div>
+            </div>
+    </body>
+    <script type="text/javascript">
+        function Confirm(form){
+        alert("feedback given successfully!"); 
+        form.submit();
+        }
+    </script>
+</html>
